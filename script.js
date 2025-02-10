@@ -8,4 +8,59 @@ Testare su postman
 Buon lavoro!
 */
 
+const express = require ("express");
+const app= express();
+const port = 3000;
 
+//per mettere le immagini, faccio riferiemnto alla cartella public
+app.use(express.static ('public'));
+
+
+//attivazione della rotta
+app.get("/api/post", (req, res) => {
+    const posts = [
+        {
+           
+            titolo: "ciambellone",
+            contenuto: "torta",
+            img: "ciambellone.jpeg",
+            tags: ["buono", "buonissimo", "crema"]
+        },
+        {
+           
+            titolo: "cracker",
+            contenuto: "snack",
+            img: "cracker_barbabietola.jpeg",
+            tags: ["buono", "buonissimo", "salato"]
+        },
+        {
+      
+            titolo: "pane fritto",
+            contenuto: "pane fatto in casa",
+            img: "pane_fritto_dolce.jpeg",
+            tags: ["buono", "buonissimo", "dolce"]
+        },
+        {
+            
+            titolo: "pasta_barbabietola",
+            contenuto: "pasta italiana",
+            img: "pasta_barbabietola.jpeg",
+            tags: ["buono", "buonissimo", "italiana"]
+        },
+        {
+           
+            titolo: "Torta paesana",
+            contenuto: "torta sarda",
+            img: "torta_paesana.jpeg",
+            tags: ["buono", "buonissimo", "sardo"]
+        }
+    ];
+
+    res.json(posts);
+});
+
+
+
+app.listen(port, ()=>{
+    console.log("connessione porta 3000");
+})
